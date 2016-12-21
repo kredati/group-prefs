@@ -1,20 +1,21 @@
 let Group = require('./group.js')
 let Person = require('./person.js')
 let Roster = require('./roster.js')
-let GroupController = require('./groupController.js')
+let Sorter = require('./groupSorter.js')
+let ResultSet = require('./resultSet')
 
 let roster = new Roster()
-let groups = new GroupController(roster)
+let sorter = new Sorter(roster)
 
 let power = new Group('Power', 2, 3)
 let knowledge = new Group('Knowledge', 2, 3)
 let sexuality = new Group('Sexuality', 2, 3)
 let subjectivity = new Group('Subjectivity', 2, 3)
 
-groups.addGroup(power)
-groups.addGroup(knowledge)
-groups.addGroup(sexuality)
-groups.addGroup(subjectivity)
+sorter.addGroup(power)
+sorter.addGroup(knowledge)
+sorter.addGroup(sexuality)
+sorter.addGroup(subjectivity)
 
 let abby = new Person('Abby', [power, knowledge, subjectivity, sexuality])
 let alex = new Person('Alex', [power, subjectivity, knowledge, sexuality])
@@ -43,4 +44,9 @@ roster.enroll(alex)
 roster.enroll(gary)
 roster.enroll(fan)
 
-groups.balanceFromTop()
+let sets = new Array(10).fill(null)
+
+sets.forEach((set, id) => {
+  sorter.balanceFromTop()
+  sets[id] = new ResultSet(sorter)
+})
