@@ -1,25 +1,7 @@
-let config = {
-
-  'numStudents': 40,
-
-  'groups': [
-    {'name': 'Action', 'min': 4, 'max': 5},
-    {'name': 'Bowery', 'min': 4, 'max': 5},
-    {'name': 'Container', 'min': 4, 'max': 5},
-    {'name': 'Delta', 'min': 4, 'max': 5},
-    {'name': 'Excellent', 'min': 4, 'max': 5},
-    {'name': 'Foxtrot', 'min': 4, 'max': 5},
-    {'name': 'Golf', 'min': 4, 'max': 5},
-    {'name': 'Home', 'min': 4, 'max': 5}
-  ]
-
-}
-
 let fs = require('fs'),
   json2csv = require('json2csv'),
   randomNameGenerator = require('node-random-name'),
-  parseCsv = require('./node-csv.js'),
-  Person = require('./person.js')
+  config = require('./groupConfig.js')
 
 let args = process.argv.slice(2),
   file = (args[0]) ? args[0] : 'students.csv',
@@ -57,9 +39,6 @@ students.forEach((student, id) => {
     prefs = randomPrefs()
 
   students[id] = {name, prefs}
-
-  console.log(students[id])
-
 })
 
 let fields = ['name'].concat(config.groups.map((group) => group.name))
@@ -81,36 +60,8 @@ let studentsExport = students.map((student) => {
 
 let csv = json2csv({'data': studentsExport, fields})
 
-console.log(csv)
-
-fs.writeFileSync(file, csv)
-
-let isHeader = true,
-  importedGroups = [],
-  importedStudents = []
-
-let parseHeader = (header) => {
-  header.splice(0, 1)
-  importedGroups = header
-  isHeader = false
-}
-
-let parseRow = (row) => {
-  let studentName = row.splice(0, 1),
-    prefs = []
-
-  row.forEach((ranking, id) => {
-    prefs[ranking - 1] = importedGroups[id]
-  })
-
-  importedStudents.push(new Person(studentName, prefs))
-}
-
-parseCsv.each(file).on('data', (data) => {
-    if (isHeader) parseHeader(data)
-    else parseRow(data)
-  })
-  .on('end', () => {
-    console.log(`Parsed ${importedStudents.length} students.`)
-    console.log(importedStudents)
-  })
+fs.writeFile(file, csv, (err) => {
+  if (err) throw new Error(err)
+  console.log('Successfully generated new random student prefs:')
+  console.log(csv)
+})
