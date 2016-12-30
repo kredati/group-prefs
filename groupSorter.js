@@ -15,7 +15,7 @@ module.exports = (() => {
       this.sortByGroupSize()
     }
 
-    groupExists(name) {
+    groupExists (name) {
       let matches
 
       matches = this.groups.filter((group) => group.name === name)
@@ -164,7 +164,8 @@ module.exports = (() => {
           Least unhappy in ${group.name} are
           ${leastUnhappy.map((student) => student.name)}.`)
 
-        console.log(`Pulling ${pulled.name} into ${group.name}`)
+        console.log(`Pulling ${pulled.name} into ${group.name},
+          with rank of ${pulled.getRankOf(group)}.`)
 
         pulled.assignTo(group)
       }
@@ -204,10 +205,10 @@ module.exports = (() => {
       )
 
       let ranked = this.sortByRankOf(over, spacious),
-      happiest = ranked.filter((member) => {
-        return member.getRankOf(spacious) === ranked[0].getRankOf(spacious)
-      }),
-      pushed = this.pickOneOf(happiest)
+        happiest = ranked.filter((member) => {
+          return member.getRankOf(spacious) === ranked[0].getRankOf(spacious)
+        }),
+        pushed = this.pickOneOf(happiest)
 
       console.log(`A group with space is ${spacious.name}.
         Members like spacious in order ${ranked.map((group) => group.name)}.
@@ -238,8 +239,8 @@ module.exports = (() => {
       return happiest
     }
 
-    mostSpacious (group) {
-      let spacious = group.slice().sort(
+    mostSpacious (groups) {
+      let spacious = groups.slice().sort(
         (first, second) => second.space() - first.space()
       )
 
