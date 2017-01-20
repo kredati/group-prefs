@@ -128,19 +128,19 @@ module.exports = (() => {
     rebalance () {
       this.pull()
       this.push()
-      console.log(this.report())
+      //console.log(this.report())
     }
 
     pull () {
-      console.log('Running pull.')
+      //console.log('Running pull.')
       let under = this.mostUnder()
 
       if (under.length === 0) {
-        console.log('Completed pull.')
+        //console.log('Completed pull.')
         return true
       }
 
-      console.log(`Most under are: ${under.map((group) => group.name)}`)
+      //console.log(`Most under are: ${under.map((group) => group.name)}`)
 
       under.forEach((group) => this.pullInLeastUnhappy(group))
 
@@ -148,8 +148,8 @@ module.exports = (() => {
     }
 
     pullInLeastUnhappy (group) {
-      console.log(`Pulling students into ${group.name},
-        which needs ${group.under()} students.`)
+      //console.log(`Pulling students into ${group.name},
+        //which needs ${group.under()} students.`)
 
       while (group.isTooSmall()) {
         let over = this.getMembersInOversubscribedGroups(),
@@ -159,13 +159,13 @@ module.exports = (() => {
           ),
           pulled = this.pickOneOf(leastUnhappy)
 
-        console.log(`Students in oversubscribed groups are:
+        /*console.log(`Students in oversubscribed groups are:
           ${over.map((student) => student.name)}.
           Least unhappy in ${group.name} are
           ${leastUnhappy.map((student) => student.name)}.`)
 
         console.log(`Pulling ${pulled.name} into ${group.name},
-          with rank of ${pulled.getRankOf(group)}.`)
+          with rank of ${pulled.getRankOf(group)}.`)*/
 
         pulled.assignTo(group)
       }
@@ -193,8 +193,8 @@ module.exports = (() => {
 
       let over = this.membersInGroups(this.mostOver())
 
-      console.log(`There are ${over.length} members in oversubscribed groups.
-        ${over.map((group) => group.name)}`)
+      /*console.log(`There are ${over.length} members in oversubscribed groups.
+        ${over.map((group) => group.name)}`)*/
 
       if (over.length === 0) return true
 
@@ -210,13 +210,13 @@ module.exports = (() => {
         }),
         pushed = this.pickOneOf(happiest)
 
-      console.log(`A group with space is ${spacious.name}.
+      /*console.log(`A group with space is ${spacious.name}.
         Members like spacious in order ${ranked.map((group) => group.name)}.
-        Assigning ${pushed.name} to ${spacious.name}.`)
+        Assigning ${pushed.name} to ${spacious.name}.`)*/
 
       pushed.assignTo(spacious)
 
-      console.log('Rerunning push().')
+      //console.log('Rerunning push().')
       return this.push()
     }
 

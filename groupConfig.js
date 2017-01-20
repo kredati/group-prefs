@@ -11,6 +11,8 @@ module.exports = {
     {'name': 'Foxtrot', 'min': 4, 'max': 5},
     {'name': 'Golf', 'min': 4, 'max': 5},
     {'name': 'Home', 'min': 4, 'max': 5}
-  ]
+  ],
+
+  'runs': 10000
 
 }

@@ -31,7 +31,7 @@ module.exports = {
         "brace-style": "error",
         "callback-return": "error",
         "camelcase": "error",
-        "capitalized-comments": "error",
+        "capitalized-comments": "off",
         "class-methods-use-this": "off",
         "comma-dangle": "error",
         "comma-spacing": [
@@ -244,7 +244,7 @@ module.exports = {
         ],
         "space-infix-ops": "error",
         "space-unary-ops": "error",
-        "spaced-comment": "error",
+        "spaced-comment": "off",
         "strict": "error",
         "symbol-description": "error",
         "template-curly-spacing": [

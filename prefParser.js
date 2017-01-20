@@ -33,23 +33,18 @@ let parseRow = (row) => {
   })
 
   roster.enroll(new Person(studentName, prefs))
-
-  console.log(roster.students[roster.students.length - 1])
 }
 
-let parse = (file, callback) => {
-
-  csv.each(file).on('data', (data) => {
-      if (isHeader) parseHeader(data)
-      else parseRow(data)
-    })
-    .on('end', () => {
-
-      console.log(`Parsed ${roster.size} students.`)
-      console.log(roster.getStudents())
-
-      callback({groups, roster})
-    })
+let parse = (file) => {
+  return new Promise((resolve, reject) => {
+    csv.each(file)
+      .on('data', (data) => {
+        if (isHeader) parseHeader(data)
+        else parseRow(data)
+      })
+      .on('end', () => resolve({groups, roster}))
+      .on('error', () => reject(new Error('Parsing CSV went wrong.')))
+  })
 }
 
 module.exports = parse
