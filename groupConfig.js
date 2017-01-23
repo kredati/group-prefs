@@ -1,5 +1,7 @@
 module.exports = {
 
+  'reportFile': './report.txt',
+
   'numStudents': 40,
 
   'groups': [
@@ -13,6 +15,6 @@ module.exports = {
     {'name': 'Home', 'min': 4, 'max': 5}
   ],
 
-  'runs': 10000
+  'runs': 1000
 
 }

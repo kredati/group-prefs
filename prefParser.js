@@ -25,6 +25,7 @@ let parseHeader = (header) => {
 }
 
 let parseRow = (row) => {
+
   let studentName = row.splice(0, 1),
     prefs = []
 

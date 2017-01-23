@@ -7,6 +7,8 @@ let sets = new Array(config.runs).fill(null)
 
 let sort = (info) => {
 
+  console.log(`Beginning sort! Performing ${sets.length} run(s).`)
+
   let roster = info.roster,
     sorter = new Sorter(roster)
 
@@ -21,21 +23,21 @@ let sort = (info) => {
 
   let uniqueSets = sets.sort((first, second) => first.happierThan(second))
     .filter((set) => sets[0].happierThan(set) === 0)
-    .reduce((unique, set) => {
-      if (unique.filter((uniqueOne) => uniqueOne.equals(set)).length > 0)
-        unique.push(set)
-      return unique
+    .reduce((uniques, set) => {
+      if (uniques.filter((unique) => unique.equals(set)).length === 0)
+        uniques.push(set)
+      return uniques
     }, sets.slice(0, 1))
 
   console.log(`SORTED! Into ${uniqueSets.length} unique equally happy groups.`)
 
-  return uniqueSets
+  return {sets, uniqueSets}
 
 }
 
-module.exports = (file) => {
+module.exports = (file = 'students.csv') => {
   return new Promise((resolve, reject) => {
-    parse((file) ? file : 'students.csv')
+    parse(file)
       .then((info) => resolve(sort(info)))
       .catch((err) => reject(err))
   })

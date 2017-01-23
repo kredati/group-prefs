@@ -1,0 +1,109 @@
+Here are the results of your sort.
+Run on Sun Jan 22 2017 at 22:33:53 GMT-0500 (EST).
+
+Total happiness is 7.
+
+ACTION has 5 members.
+Min is 4, max is 5.
+Group happiness is 2.
+
+Group members are:
+Ismael (0).
+Stacy (0).
+Genny (0).
+Roselyn (1).
+Ricky (1).
+
+
+BOWERY has 5 members.
+Min is 4, max is 5.
+Group happiness is 3.
+
+Group members are:
+Whitley (0).
+Sid (0).
+Charles (1).
+Eldon (1).
+Leon (1).
+
+
+CONTAINER has 5 members.
+Min is 4, max is 5.
+Group happiness is 0.
+
+Group members are:
+Stevie (0).
+Arthur (0).
+Hollis (0).
+Burl (0).
+Wes (0).
+
+
+DELTA has 5 members.
+Min is 4, max is 5.
+Group happiness is 1.
+
+Group members are:
+Valentin (0).
+Rosana (0).
+Alfonso (0).
+Antonetta (0).
+Korey (1).
+
+
+EXCELLENT has 5 members.
+Min is 4, max is 5.
+Group happiness is 0.
+
+Group members are:
+Bradly (0).
+Domenic (0).
+Tama (0).
+Maurine (0).
+Kathlene (0).
+
+
+FOXTROT has 5 members.
+Min is 4, max is 5.
+Group happiness is 0.
+
+Group members are:
+Calvin (0).
+Terresa (0).
+Fidelia (0).
+Lisbeth (0).
+Mirella (0).
+
+
+GOLF has 5 members.
+Min is 4, max is 5.
+Group happiness is 0.
+
+Group members are:
+Casey (0).
+Royce (0).
+Romeo (0).
+Reginald (0).
+Major (0).
+
+
+HOME has 5 members.
+Min is 4, max is 5.
+Group happiness is 1.
+
+Group members are:
+Evie (0).
+Renea (0).
+Cruz (0).
+Bella (0).
+Gaylord (1).
+
+
+Unhappiest member(s):
+Korey has happines of 1 in Delta
+Charles has happines of 1 in Bowery
+Leon has happines of 1 in Bowery
+Roselyn has happines of 1 in Action
+Gaylord has happines of 1 in Home
+Eldon has happines of 1 in Bowery
+Ricky has happines of 1 in Action
